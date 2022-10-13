@@ -5,10 +5,25 @@ export interface ILoginRequest {
   password: string
 }
 
-export function login(loginRequest: ILoginRequest) {
-  return request({
-    url: '/users/info',
-    method: 'get',
-    data: loginRequest
-  })
+export interface ILoginResonse {
+  sucessmsg: string
 }
+
+export interface IUserRequest {
+  email: string
+  password: string
+}
+
+export interface IUserResonse {
+  avatar: string
+}
+
+export const login = (): Promise<ILoginResonse> =>
+  request.get<ILoginResonse>('/users/login').then(({ data }) => {
+    return data
+  })
+
+export const getUserData = (payload: IUserRequest): Promise<IUserResonse> =>
+  request.post<IUserResonse>('/users/info', payload).then(({ data }) => {
+    return data
+  })
