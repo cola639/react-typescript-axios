@@ -10,8 +10,8 @@ const App: FC<IAppProps> = ({}) => {
     password: 'some-test-pass'
   }
 
-  const [msg, setMsg] = useState<string>('default msg: hellow world')
-  const [avatar, setAvatar] = useState<string>('')
+  const [msg, setMsg] = useState('default msg: hellow world')
+  const [avatar, setAvatar] = useState('')
 
   const loginUser = () => {
     login()
